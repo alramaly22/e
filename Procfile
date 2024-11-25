@@ -1,1 +1,1 @@
-web: gunicorn ecom.wsgi --log-file gunicorn.log
+web: gunicorn ecom.wsgi --access-logfile=access.log --error-logfile=error.log
