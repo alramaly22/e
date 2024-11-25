@@ -9,12 +9,12 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-3c#1%ro5@s7pl%%=xf50c-&+y-8y)vm6*%k@9a&ry)chy!m*xn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-production-e70c7.up.railway.app', 'https://web-production-e70c7.up.railway.app']
-CSRF_TRUSTED_ORIGINS =['https://web-production-e70c7.up.railway.app']
+ALLOWED_HOSTS = ['127.0.0.1','web-production-e70c7.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-e70c7.up.railway.app']
 
 # Application definition
 
@@ -83,13 +83,8 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('Postgres.DATABASE_URL'), 
-        conn_max_age=1800
-    )
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=1800)
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
